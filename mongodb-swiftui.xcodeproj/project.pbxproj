@@ -13,6 +13,7 @@
 		9D8175FF269EAEB10052FBF6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D8175FE269EAEB10052FBF6 /* Preview Assets.xcassets */; };
 		9D817608269EAFAE0052FBF6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 9D817607269EAFAE0052FBF6 /* Realm */; };
 		9D81760A269EAFAE0052FBF6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9D817609269EAFAE0052FBF6 /* RealmSwift */; };
+		9D81760C269EB8EF0052FBF6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D81760B269EB8EF0052FBF6 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		9D8175FB269EAEB10052FBF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D8175FE269EAEB10052FBF6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9D817600269EAEB10052FBF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D81760B269EB8EF0052FBF6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				9D8175FB269EAEB10052FBF6 /* Assets.xcassets */,
 				9D817600269EAEB10052FBF6 /* Info.plist */,
 				9D8175FD269EAEB10052FBF6 /* Preview Content */,
+				9D81760B269EB8EF0052FBF6 /* Model.swift */,
 			);
 			path = "mongodb-swiftui";
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D81760C269EB8EF0052FBF6 /* Model.swift in Sources */,
 				9D8175FA269EAEB10052FBF6 /* ContentView.swift in Sources */,
 				9D8175F8269EAEB10052FBF6 /* mongodb_swiftuiApp.swift in Sources */,
 			);
