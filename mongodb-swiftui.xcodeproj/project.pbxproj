@@ -14,6 +14,8 @@
 		9D817608269EAFAE0052FBF6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 9D817607269EAFAE0052FBF6 /* Realm */; };
 		9D81760A269EAFAE0052FBF6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9D817609269EAFAE0052FBF6 /* RealmSwift */; };
 		9D81760C269EB8EF0052FBF6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D81760B269EB8EF0052FBF6 /* Model.swift */; };
+		9D81760E269ECA650052FBF6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D81760D269ECA650052FBF6 /* LoginView.swift */; };
+		9D817612269F47E10052FBF6 /* RealmAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D817611269F47E10052FBF6 /* RealmAuth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		9D8175FE269EAEB10052FBF6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9D817600269EAEB10052FBF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D81760B269EB8EF0052FBF6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		9D81760D269ECA650052FBF6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		9D817611269F47E10052FBF6 /* RealmAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAuth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +64,11 @@
 			children = (
 				9D8175F7269EAEB10052FBF6 /* mongodb_swiftuiApp.swift */,
 				9D8175F9269EAEB10052FBF6 /* ContentView.swift */,
+				9D81760F269ECA6E0052FBF6 /* View */,
 				9D8175FB269EAEB10052FBF6 /* Assets.xcassets */,
 				9D817600269EAEB10052FBF6 /* Info.plist */,
 				9D8175FD269EAEB10052FBF6 /* Preview Content */,
-				9D81760B269EB8EF0052FBF6 /* Model.swift */,
+				9D817610269F47D60052FBF6 /* Models */,
 			);
 			path = "mongodb-swiftui";
 			sourceTree = "<group>";
@@ -74,6 +79,23 @@
 				9D8175FE269EAEB10052FBF6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9D81760F269ECA6E0052FBF6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9D81760D269ECA650052FBF6 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9D817610269F47D60052FBF6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9D81760B269EB8EF0052FBF6 /* Model.swift */,
+				9D817611269F47E10052FBF6 /* RealmAuth.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +176,8 @@
 			files = (
 				9D81760C269EB8EF0052FBF6 /* Model.swift in Sources */,
 				9D8175FA269EAEB10052FBF6 /* ContentView.swift in Sources */,
+				9D817612269F47E10052FBF6 /* RealmAuth.swift in Sources */,
+				9D81760E269ECA650052FBF6 /* LoginView.swift in Sources */,
 				9D8175F8269EAEB10052FBF6 /* mongodb_swiftuiApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
