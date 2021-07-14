@@ -38,7 +38,7 @@ struct LoginView: View {
                                 .stroke(lineWidth: 1.0))
                 
                 Button(action: {
-                    
+                    RealmAuth(email: email, password: password)
                 }) {
                     Text("Login")
                         .padding(8)
@@ -61,7 +61,7 @@ struct LoginView: View {
                 }
                 
                 Button(action: {
-                    
+                    RealmAuthAnonymous()
                 }) {
                     Text("Login Anonymously")
                         .padding(8)
