@@ -15,16 +15,7 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                HStack {
-                    Spacer()
-                    Image("Login")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 300, height: 350)
-                    Spacer()
-                }
-
-                
+                Spacer()
                 TextField("Email ID",text: $email)
                     .padding()
                     .overlay(RoundedRectangle(cornerRadius: 5.0)
@@ -72,6 +63,15 @@ struct LoginView: View {
                                     .stroke(lineWidth: 2.0)
                                     .shadow(color: .blue, radius: 10.0))
                         .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
+                }
+                Spacer()
+                HStack {
+                    Spacer()
+                    NavigationLink(destination: RegisterView()) {
+                        Text("I'm new here. Create a new account?")
+                            .foregroundColor(.blue)
+                    }
+                    Spacer()
                 }
                 
             }
