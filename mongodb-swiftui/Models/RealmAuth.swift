@@ -16,6 +16,8 @@ func RealmAuth(email:String, password:String, completion: @escaping (success) ->
         switch result {
         case .failure(let error):
             print("Login failed: \(error.localizedDescription)")
+            e = "Login Failed: \(error.localizedDescription)"
+            completion(false)
         case .success(let user):
             print("Successfully logged in as user \(user)")
             completion(true)
@@ -29,6 +31,8 @@ func RealmAuthAnonymous(completion: @escaping (success) -> Void){
         switch result {
         case .failure(let error):
             print("Login failed: \(error.localizedDescription)")
+            e = "Login Failed: \(error.localizedDescription)"
+            completion(false)
         case .success(let user):
             print("Successfully logged in as user \(user)")
             completion(true)
@@ -37,16 +41,18 @@ func RealmAuthAnonymous(completion: @escaping (success) -> Void){
 
 }
 
-func RealmRegister(email:String, password:String){
+func RealmRegister(email:String, password:String, completion: @escaping (success) -> Void){
     let client = app.emailPasswordAuth
     let email = email
     let password = password
     client.registerUser(email: email, password: password) { (error) in
         guard error == nil else {
             print("Failed to register: \(error!.localizedDescription)")
+            e = "Failed to register: \(error!.localizedDescription)"
+            completion(false)
             return
         }
-        // Registering just registers. You can now log in.
+        completion(true)
         print("Successfully registered user.")
     }
 
