@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+var e: String?
 struct RegisterView: View {
     
     @State private var email: String = ""
@@ -48,6 +48,7 @@ struct RegisterView: View {
                             self.load.toggle()
                         } else {
                             self.load.toggle()
+                            self.alertItem = AlertItem(title: Text("Error"), message: Text(e!), dismissButton: .default(Text("Done")))
                         }
                     }
                 } else {

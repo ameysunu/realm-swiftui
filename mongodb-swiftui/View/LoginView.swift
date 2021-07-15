@@ -15,6 +15,8 @@ struct LoginView: View {
     @State var load: Bool = false
     @State var anyload: Bool = false
     
+    @State var alertItem: AlertItem?
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -41,6 +43,7 @@ struct LoginView: View {
                                 self.load.toggle()
                             }else {
                                 self.load.toggle()
+                                self.alertItem = AlertItem(title: Text("Error"), message: Text(e!), dismissButton: .default(Text("Done")))
                             }
                         }
                     }) {
@@ -91,6 +94,7 @@ struct LoginView: View {
                                 self.anyload.toggle()
                             } else {
                                 self.anyload.toggle()
+                                self.alertItem = AlertItem(title: Text("Error"), message: Text(e!), dismissButton: .default(Text("Done")))
                             }
                         }
                     }) {
@@ -132,6 +136,9 @@ struct LoginView: View {
                     Spacer()
                 }
                 
+            }
+            .alert(item: $alertItem){ item in
+                Alert(title: item.title, message: item.message, dismissButton: item.dismissButton)
             }
             .navigationTitle("Login")
             .padding()
