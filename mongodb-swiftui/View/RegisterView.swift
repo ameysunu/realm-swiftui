@@ -11,6 +11,9 @@ struct RegisterView: View {
     
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var confirmpwd: String = ""
+    
+    @State var alertItem: AlertItem?
     
     var body: some View {
         VStack(alignment: .leading){
@@ -26,9 +29,19 @@ struct RegisterView: View {
                 .padding()
                 .overlay(RoundedRectangle(cornerRadius: 5.0)
                             .stroke(lineWidth: 1.0))
+                .padding(.bottom, 20)
+            
+            SecureField("Confirm Password", text: $confirmpwd)
+                .padding()
+                .overlay(RoundedRectangle(cornerRadius: 5.0)
+                            .stroke(lineWidth: 1.0))
             
             Button(action: {
+                if(password == confirmpwd){
                 RealmRegister(email: email, password: password)
+                } else {
+                    self.alertItem = AlertItem(title: Text("Error"), message: Text("Passwords do not match."), dismissButton: .default(Text("Done")))
+                }
             }) {
                 Text("Create an account")
                     .padding(8)
@@ -43,6 +56,9 @@ struct RegisterView: View {
             .padding(.top, 10)
             
         }
+        .alert(item: $alertItem){ item in
+                 Alert(title: item.title, message: item.message, dismissButton: item.dismissButton)
+             }
         .navigationTitle("Register")
         .padding()
     }
