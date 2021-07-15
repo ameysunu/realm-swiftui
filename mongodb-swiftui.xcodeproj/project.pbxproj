@@ -17,6 +17,7 @@
 		9D81760E269ECA650052FBF6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D81760D269ECA650052FBF6 /* LoginView.swift */; };
 		9D817612269F47E10052FBF6 /* RealmAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D817611269F47E10052FBF6 /* RealmAuth.swift */; };
 		9D817614269F4C000052FBF6 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D817613269F4C000052FBF6 /* RegisterView.swift */; };
+		9DA463CB26A008C200FD7A46 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA463CA26A008C200FD7A46 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		9D81760D269ECA650052FBF6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		9D817611269F47E10052FBF6 /* RealmAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAuth.swift; sourceTree = "<group>"; };
 		9D817613269F4C000052FBF6 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		9DA463CA26A008C200FD7A46 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			children = (
 				9D81760D269ECA650052FBF6 /* LoginView.swift */,
 				9D817613269F4C000052FBF6 /* RegisterView.swift */,
+				9DA463CA26A008C200FD7A46 /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D81760C269EB8EF0052FBF6 /* Model.swift in Sources */,
+				9DA463CB26A008C200FD7A46 /* HomeView.swift in Sources */,
 				9D8175FA269EAEB10052FBF6 /* ContentView.swift in Sources */,
 				9D817612269F47E10052FBF6 /* RealmAuth.swift in Sources */,
 				9D817614269F4C000052FBF6 /* RegisterView.swift in Sources */,
