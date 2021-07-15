@@ -29,7 +29,7 @@ struct LoginView: View {
                     .overlay(RoundedRectangle(cornerRadius: 5.0)
                                 .stroke(lineWidth: 1.0))
                 
-                NavigationLink(destination: HomeView(), isActive: $isNavigated) {
+                NavigationLink(destination: HomeView().navigationBarBackButtonHidden(true), isActive: $isNavigated) {
                     Button(action: {
                         RealmAuth(email: email, password: password){
                             (success) -> Void in
@@ -59,9 +59,14 @@ struct LoginView: View {
                     Color.gray.frame(height:CGFloat(1) / UIScreen.main.scale)
                 }
                 
-                NavigationLink(destination: HomeView(), isActive: $isNavigated) {
+                NavigationLink(destination: HomeView().navigationBarBackButtonHidden(true), isActive: $isNavigated) {
                     Button(action: {
-                        RealmAuthAnonymous()
+                        RealmAuthAnonymous(){
+                            (success) -> Void in
+                            if success {
+                                self.isNavigated = true
+                            }
+                        }
                     }) {
                         Text("Login Anonymously")
                             .padding(8)
