@@ -37,7 +37,7 @@ func RealmAuthAnonymous(completion: @escaping (success) -> Void){
 
 }
 
-func RealmRegister(email:String, password:String){
+func RealmRegister(email:String, password:String, completion: @escaping (success) -> Void){
     let client = app.emailPasswordAuth
     let email = email
     let password = password
@@ -46,7 +46,7 @@ func RealmRegister(email:String, password:String){
             print("Failed to register: \(error!.localizedDescription)")
             return
         }
-        // Registering just registers. You can now log in.
+        completion(true)
         print("Successfully registered user.")
     }
 
