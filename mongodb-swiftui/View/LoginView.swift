@@ -33,7 +33,7 @@ struct LoginView: View {
                     .overlay(RoundedRectangle(cornerRadius: 5.0)
                                 .stroke(lineWidth: 1.0))
                 
-                NavigationLink(destination: HomeView().navigationBarBackButtonHidden(true), isActive: $isNavigated) {
+                NavigationLink(destination: WelcomeView().navigationBarBackButtonHidden(true), isActive: $isNavigated) {
                     Button(action: {
                         self.load.toggle()
                         RealmAuth(email: email, password: password){
@@ -85,7 +85,7 @@ struct LoginView: View {
                     Color.gray.frame(height:CGFloat(1) / UIScreen.main.scale)
                 }
                 
-                NavigationLink(destination: HomeView().navigationBarBackButtonHidden(true), isActive: $isNavigated) {
+                NavigationLink(destination: WelcomeView().navigationBarBackButtonHidden(true), isActive: $isNavigated) {
                     Button(action: {
                         RealmAuthAnonymous(){
                             (success) -> Void in

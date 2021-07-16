@@ -9,9 +9,12 @@ import Foundation
 import RealmSwift
 import SwiftUI
 
-class User: Object {
+class UserData: Object {
+    @objc dynamic var userID: String?
     @objc dynamic var name: String?
     @objc dynamic var gender: String?
+    @objc dynamic var country: String?
+    @objc dynamic var age: String?
 }
 
 struct AlertItem: Identifiable {

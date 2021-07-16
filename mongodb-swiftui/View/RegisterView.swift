@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
+
 var e: String?
 struct RegisterView: View {
     
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var confirmpwd: String = ""
-    @State var createdAcc: Bool = false
     @State var load: Bool = false
     
     @State var alertItem: AlertItem?
@@ -44,8 +44,10 @@ struct RegisterView: View {
                     RealmRegister(email: email, password: password){
                         (success) -> Void in
                         if success {
-                            self.createdAcc.toggle()
                             self.load.toggle()
+                            
+                            self.alertItem = AlertItem(title: Text("Success"), message: Text("Created an account successfully! Kindly go back to Login page to login with your credentials."), dismissButton: .default(Text("Done")))
+                            
                         } else {
                             self.load.toggle()
                             self.alertItem = AlertItem(title: Text("Error"), message: Text(e!), dismissButton: .default(Text("Done")))
@@ -56,40 +58,34 @@ struct RegisterView: View {
                 }
             }) {
                 if(load != true){
-                Text("Create an account")
-                    .padding(8)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.white)
-                    .padding(10)
-                    .overlay(RoundedRectangle(cornerRadius: 10)
-                                .stroke(lineWidth: 2.0)
-                                .shadow(color: .blue, radius: 10.0))
-                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
-                } else {
-                    HStack{
-                        Spacer()
-                        ProgressView()
-                        Spacer()
-                    }
+                    Text("Create an account")
                         .padding(8)
                         .frame(maxWidth: .infinity)
                         .foregroundColor(.white)
                         .padding(10)
                         .overlay(RoundedRectangle(cornerRadius: 10)
                                     .stroke(lineWidth: 2.0)
-                                    .shadow(color: .gray, radius: 10.0))
-                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.gray))
+                                    .shadow(color: .blue, radius: 10.0))
+                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
+                } else {
+                    HStack{
+                        Spacer()
+                        ProgressView()
+                        Spacer()
+                    }
+                    .padding(8)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.white)
+                    .padding(10)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                                .stroke(lineWidth: 2.0)
+                                .shadow(color: .gray, radius: 10.0))
+                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.gray))
                     .disabled(true)
                 }
             }
             .padding(.top, 10)
             
-            if(createdAcc == true){
-                Text("Created account successfully! Go back to login and sign in again.")
-                    .font(.title3)
-                    .foregroundColor(.green)
-                    .padding(.top, 10)
-            }
             
         }
         .alert(item: $alertItem){ item in
