@@ -11,8 +11,14 @@ import RealmSwift
 struct ContentView: View {
     
     init (){
+        
         let realm = try! Realm()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
+//        do {try FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)}
+//        catch {
+//        print("yeet")
+//        }
                 
 //        let results = realm.objects(User.self).filter("gender = 'Male'")
 //        print(results.count)

@@ -54,6 +54,8 @@ struct WelcomeView: View {
             NavigationLink(destination: HomeView().navigationBarBackButtonHidden(true), isActive: $navigated) {
                 Button(action: {
                     let user = UserData()
+                    
+                    user.userID = uid
                     user.gender = gender
                     user.name = name
                     user.age = age
