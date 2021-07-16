@@ -22,7 +22,7 @@ struct WelcomeView: View {
     var body: some View {
         
         VStack(alignment: .leading){
-            Text("Personal Information")
+            Text("We need to get to know you a little better.")
                 .font(.title2)
                 .foregroundColor(.gray)
                 .padding(.bottom, 20)

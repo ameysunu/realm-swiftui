@@ -9,8 +9,29 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        VStack {
-            Text("Welcome user!")
+        TabView {
+            Text("My Diary")
+                .tabItem {
+                    Image(systemName: "books.vertical.fill")
+                    Text("My Diary")
+                }
+            
+            Button(action: {
+                app.currentUser?.logOut { (error) in
+                    if let e = error {
+                        print(e.localizedDescription)
+                    } else {
+                        print("logged out")
+                    }
+                }
+                
+            }) {
+                Text("User Details")
+            }
+            .tabItem {
+                Image(systemName: "person.fill")
+                Text("User Details")
+            }
         }
     }
 }
