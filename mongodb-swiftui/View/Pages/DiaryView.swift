@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct DiaryView: View {
     
@@ -28,6 +29,8 @@ struct DiaryView: View {
                 Diaries()
             }
         }
+        .navigationBarHidden(true)
+        .navigationTitle("")
     }
 }
 
@@ -36,6 +39,7 @@ struct Diaries: View{
     @State private var title: String = ""
     @State private var mood: String = ""
     @State private var main: String = ""
+    let realm = try! Realm()
     
     var body: some View {
         NavigationView {
@@ -75,7 +79,21 @@ struct Diaries: View{
                 }
                 Spacer()
                 
-                Button(action: {}){
+                Button(action: {
+                    print(Date().localizedDescription)
+                    let diary = Diary()
+                    
+                    diary.userID = uid
+                    diary.title = title
+                    diary.date = Date().localizedDescription
+                    diary.mood = mood
+                    diary.value = main
+                    
+                    try! realm.write{
+                        realm.add(diary)
+                    }
+
+                }){
                     Text("Save")
                         .padding(8)
                         .frame(maxWidth: .infinity)
