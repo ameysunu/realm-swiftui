@@ -14,7 +14,8 @@ struct ContentView: View {
         
         let realm = try! Realm()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-        
+        uid = String(app.currentUser?.id ?? "")
+        print(uid as Any)
         //        do {try FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)}
         //        catch {
         //        print("yeet")
