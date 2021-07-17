@@ -11,30 +11,29 @@ import RealmSwift
 struct DiaryView: View {
     
     @State var presented: Bool = false
-    @State var data = try! Realm().objects(Diary.self).filter("userID = '\(uid!)'")
+    @State private var data: Results<Diary> = try! Realm().objects(Diary.self).filter("userID = '\(uid!)'")
     
     
     var body: some View {
         NavigationView {
             List{
-                ForEach(data) { value in
-                    Section(header: Text(value.date!)){
-                        VStack {
-                            HStack {
-                                Text(value.title!)
-                                    .font(.title3)
-                                Spacer()
-                            }
-                            HStack {
-                                Text(value.mood!)
-                                    .foregroundColor(.gray)
-                                Spacer()
-                            }
+                ForEach(data) { item in
+                    VStack {
+                        HStack {
+                            Text(item.title!)
+                                .font(.title3)
+                            Spacer()
+                        }
+                        HStack {
+                            Text(item.date!)
+                                .foregroundColor(.gray)
+                            Spacer()
                         }
                     }
                 }
+                .onDelete(perform: deleteRow)
             }
-            .listStyle(GroupedListStyle())
+            .listStyle(PlainListStyle())
 
             .navigationTitle("My Diary")
             .toolbar{
@@ -51,6 +50,17 @@ struct DiaryView: View {
         }
         .navigationBarHidden(true)
         .navigationTitle("")
+        
+    }
+    
+    private func deleteRow(with indexSet: IndexSet){
+        let realm = try! Realm()
+        indexSet.forEach ({ index in
+            try! realm.write {
+                realm.delete(self.data[index])
+            }
+        })
+        self.data = realm.objects(Diary.self)
     }
 }
 
