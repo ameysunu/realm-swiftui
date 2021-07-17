@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D79D12726A29D4100B191ED /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79D12626A29D4100B191ED /* DiaryView.swift */; };
 		9D8175F8269EAEB10052FBF6 /* mongodb_swiftuiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8175F7269EAEB10052FBF6 /* mongodb_swiftuiApp.swift */; };
 		9D8175FA269EAEB10052FBF6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8175F9269EAEB10052FBF6 /* ContentView.swift */; };
 		9D8175FC269EAEB10052FBF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D8175FB269EAEB10052FBF6 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D79D12626A29D4100B191ED /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
 		9D8175F4269EAEB10052FBF6 /* mongodb-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mongodb-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8175F7269EAEB10052FBF6 /* mongodb_swiftuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mongodb_swiftuiApp.swift; sourceTree = "<group>"; };
 		9D8175F9269EAEB10052FBF6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				9DF34CF426A1651E00039F6C /* WelcomeView.swift */,
+				9D79D12626A29D4100B191ED /* DiaryView.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				9D8175FA269EAEB10052FBF6 /* ContentView.swift in Sources */,
 				9DF34CF526A1651E00039F6C /* WelcomeView.swift in Sources */,
 				9D817612269F47E10052FBF6 /* RealmAuth.swift in Sources */,
+				9D79D12726A29D4100B191ED /* DiaryView.swift in Sources */,
 				9D817614269F4C000052FBF6 /* RegisterView.swift in Sources */,
 				9D81760E269ECA650052FBF6 /* LoginView.swift in Sources */,
 				9D8175F8269EAEB10052FBF6 /* mongodb_swiftuiApp.swift in Sources */,
