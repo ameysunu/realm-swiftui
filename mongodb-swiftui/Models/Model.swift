@@ -45,7 +45,8 @@ extension Date {
     var localizedDescription: String { localizedDescription() }
 }
 
-class Diary: Object {
+
+class Diary: Object, Identifiable, Codable {
     @objc dynamic var userID: String?
     @objc dynamic var date: String?
     @objc dynamic var title: String?

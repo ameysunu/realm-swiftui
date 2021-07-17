@@ -11,12 +11,31 @@ import RealmSwift
 struct DiaryView: View {
     
     @State var presented: Bool = false
+    @State var data = try! Realm().objects(Diary.self).filter("userID = '\(uid!)'")
+    
     
     var body: some View {
         NavigationView {
-            VStack {
-                Text("No Diaries available.")
+            List{
+                ForEach(data) { value in
+                    Section(header: Text(value.date!)){
+                        VStack {
+                            HStack {
+                                Text(value.title!)
+                                    .font(.title3)
+                                Spacer()
+                            }
+                            HStack {
+                                Text(value.mood!)
+                                    .foregroundColor(.gray)
+                                Spacer()
+                            }
+                        }
+                    }
+                }
             }
+            .listStyle(GroupedListStyle())
+
             .navigationTitle("My Diary")
             .toolbar{
                 Button(action: {
@@ -26,7 +45,8 @@ struct DiaryView: View {
                 }
             }
             .sheet(isPresented: $presented){
-                Diaries()
+                Diaries(isPresented: $presented)
+                
             }
         }
         .navigationBarHidden(true)
@@ -40,6 +60,7 @@ struct Diaries: View{
     @State private var mood: String = ""
     @State private var main: String = ""
     let realm = try! Realm()
+    @Binding var isPresented: Bool
     
     var body: some View {
         NavigationView {
@@ -91,8 +112,9 @@ struct Diaries: View{
                     
                     try! realm.write{
                         realm.add(diary)
+                        isPresented.toggle()
                     }
-
+                    
                 }){
                     Text("Save")
                         .padding(8)
