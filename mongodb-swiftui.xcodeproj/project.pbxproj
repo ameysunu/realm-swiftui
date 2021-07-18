@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D231B9026A3F6ED009E482B /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D231B8F26A3F6ED009E482B /* ListView.swift */; };
+		9D231B9226A41843009E482B /* GlobalUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D231B9126A41843009E482B /* GlobalUsersView.swift */; };
+		9D231B9526A420EC009E482B /* GlobalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D231B9426A420EC009E482B /* GlobalView.swift */; };
 		9D79D12726A29D4100B191ED /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79D12626A29D4100B191ED /* DiaryView.swift */; };
 		9D8175F8269EAEB10052FBF6 /* mongodb_swiftuiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8175F7269EAEB10052FBF6 /* mongodb_swiftuiApp.swift */; };
 		9D8175FA269EAEB10052FBF6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8175F9269EAEB10052FBF6 /* ContentView.swift */; };
@@ -23,6 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D231B8F26A3F6ED009E482B /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		9D231B9126A41843009E482B /* GlobalUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalUsersView.swift; sourceTree = "<group>"; };
+		9D231B9426A420EC009E482B /* GlobalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalView.swift; sourceTree = "<group>"; };
 		9D79D12626A29D4100B191ED /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
 		9D8175F4269EAEB10052FBF6 /* mongodb-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mongodb-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8175F7269EAEB10052FBF6 /* mongodb_swiftuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mongodb_swiftuiApp.swift; sourceTree = "<group>"; };
@@ -51,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D231B9326A420DE009E482B /* Designs */ = {
+			isa = PBXGroup;
+			children = (
+				9D231B8F26A3F6ED009E482B /* ListView.swift */,
+				9D231B9426A420EC009E482B /* GlobalView.swift */,
+			);
+			path = Designs;
+			sourceTree = "<group>";
+		};
 		9D8175EB269EAEB10052FBF6 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +87,7 @@
 			children = (
 				9D8175F7269EAEB10052FBF6 /* mongodb_swiftuiApp.swift */,
 				9D8175F9269EAEB10052FBF6 /* ContentView.swift */,
+				9D231B9326A420DE009E482B /* Designs */,
 				9D81760F269ECA6E0052FBF6 /* View */,
 				9D8175FB269EAEB10052FBF6 /* Assets.xcassets */,
 				9D817600269EAEB10052FBF6 /* Info.plist */,
@@ -114,6 +130,7 @@
 			children = (
 				9DF34CF426A1651E00039F6C /* WelcomeView.swift */,
 				9D79D12626A29D4100B191ED /* DiaryView.swift */,
+				9D231B9126A41843009E482B /* GlobalUsersView.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -196,9 +213,12 @@
 			files = (
 				9D81760C269EB8EF0052FBF6 /* Model.swift in Sources */,
 				9DA463CB26A008C200FD7A46 /* HomeView.swift in Sources */,
+				9D231B9026A3F6ED009E482B /* ListView.swift in Sources */,
+				9D231B9526A420EC009E482B /* GlobalView.swift in Sources */,
 				9D8175FA269EAEB10052FBF6 /* ContentView.swift in Sources */,
 				9DF34CF526A1651E00039F6C /* WelcomeView.swift in Sources */,
 				9D817612269F47E10052FBF6 /* RealmAuth.swift in Sources */,
+				9D231B9226A41843009E482B /* GlobalUsersView.swift in Sources */,
 				9D79D12726A29D4100B191ED /* DiaryView.swift in Sources */,
 				9D817614269F4C000052FBF6 /* RegisterView.swift in Sources */,
 				9D81760E269ECA650052FBF6 /* LoginView.swift in Sources */,

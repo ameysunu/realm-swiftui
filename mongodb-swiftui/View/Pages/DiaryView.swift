@@ -11,46 +11,75 @@ import RealmSwift
 struct DiaryView: View {
     
     @State var presented: Bool = false
-    @State var data = try! Realm().objects(Diary.self).filter("userID = '\(uid!)'")
-    
+    @State private var data: Results<Diary> = try! Realm().objects(Diary.self).filter("userID = '\(uid!)'")
+    @State var globalData: Bool = false
     
     var body: some View {
         NavigationView {
-            List{
-                ForEach(data) { value in
-                    Section(header: Text(value.date!)){
-                        VStack {
-                            HStack {
-                                Text(value.title!)
-                                    .font(.title3)
-                                Spacer()
-                            }
-                            HStack {
-                                Text(value.mood!)
-                                    .foregroundColor(.gray)
-                                Spacer()
-                            }
-                        }
+            VStack {
+                List{
+                    ForEach(data) { item in
+                        ListView(date: item.date, title: item.title, mood: item.mood, value: item.value)
                     }
                 }
-            }
-            .listStyle(GroupedListStyle())
+                .listStyle(PlainListStyle())
 
-            .navigationTitle("My Diary")
-            .toolbar{
-                Button(action: {
-                    self.presented.toggle()
-                }) {
-                    Image(systemName: "plus")
+                .navigationTitle("My Diary")
+                .toolbar{
+                    Button(action: {
+                        self.presented.toggle()
+                    }) {
+                        Image(systemName: "plus")
+                    }
                 }
+                .sheet(isPresented: $presented){
+                    Diaries(isPresented: $presented)
+                    
             }
-            .sheet(isPresented: $presented){
-                Diaries(isPresented: $presented)
+                HStack {
+                    NavigationLink(destination: GlobalUsersView(), isActive: $globalData) {
+                        Button(action: {
+                            self.globalData.toggle()
+                        }) {
+                            Text("Global Diaries")
+                                .padding(8)
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(.white)
+                                .padding(10)
+                                .overlay(RoundedRectangle(cornerRadius: 10)
+                                            .stroke(lineWidth: 2.0)
+                                            .shadow(color: .blue, radius: 10.0))
+                                .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
+                        }
+                    }
+                    Button(action: {}) {
+                        Text("Your public diaries")
+                            .padding(8)
+                            .frame(maxWidth: .infinity)
+                            .foregroundColor(.white)
+                            .padding(10)
+                            .overlay(RoundedRectangle(cornerRadius: 10)
+                                        .stroke(lineWidth: 2.0)
+                                        .shadow(color: .blue, radius: 10.0))
+                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
+                    }
+                }
                 
             }
         }
         .navigationBarHidden(true)
         .navigationTitle("")
+        
+    }
+    
+    private func deleteRow(with indexSet: IndexSet){
+        let realm = try! Realm()
+        indexSet.forEach ({ index in
+            try! realm.write {
+                realm.delete(self.data[index])
+            }
+        })
+        self.data = realm.objects(Diary.self)
     }
 }
 
@@ -101,6 +130,7 @@ struct Diaries: View{
                 Spacer()
                 
                 Button(action: {
+                    let username = try! Realm().objects(UserData.self).filter("userID= '\(uid!)'")
                     print(Date().localizedDescription)
                     let diary = Diary()
                     
@@ -109,6 +139,7 @@ struct Diaries: View{
                     diary.date = Date().localizedDescription
                     diary.mood = mood
                     diary.value = main
+                    diary.name = username[0].name!
                     
                     try! realm.write{
                         realm.add(diary)
