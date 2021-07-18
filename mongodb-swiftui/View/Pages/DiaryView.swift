@@ -18,20 +18,8 @@ struct DiaryView: View {
         NavigationView {
             List{
                 ForEach(data) { item in
-                    VStack {
-                        HStack {
-                            Text(item.title!)
-                                .font(.title3)
-                            Spacer()
-                        }
-                        HStack {
-                            Text(item.date!)
-                                .foregroundColor(.gray)
-                            Spacer()
-                        }
-                    }
+                    ListView(date: item.date, title: item.title, mood: item.mood)
                 }
-                .onDelete(perform: deleteRow)
             }
             .listStyle(PlainListStyle())
 
