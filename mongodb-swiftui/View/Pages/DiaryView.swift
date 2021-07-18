@@ -17,13 +17,13 @@ struct DiaryView: View {
     var body: some View {
         NavigationView {
             VStack {
-               ScrollView {
+                ScrollView {
                     ForEach(data) { item in
                         ListView(date: item.date, title: item.title, mood: item.mood, value: item.value)
                     }
                 }
                 .listStyle(PlainListStyle())
-
+                
                 .navigationTitle("My Diary")
                 .toolbar{
                     Button(action: {
@@ -35,7 +35,7 @@ struct DiaryView: View {
                 .sheet(isPresented: $presented){
                     Diaries(isPresented: $presented)
                     
-            }
+                }
                 HStack {
                     NavigationLink(destination: GlobalUsersView(), isActive: $globalData) {
                         Button(action: {
@@ -72,15 +72,6 @@ struct DiaryView: View {
         
     }
     
-    private func deleteRow(with indexSet: IndexSet){
-        let realm = try! Realm()
-        indexSet.forEach ({ index in
-            try! realm.write {
-                realm.delete(self.data[index])
-            }
-        })
-        self.data = realm.objects(Diary.self)
-    }
 }
 
 struct Diaries: View{
@@ -90,6 +81,7 @@ struct Diaries: View{
     @State private var main: String = ""
     let realm = try! Realm()
     @Binding var isPresented: Bool
+    @State var noChecked: Bool = true
     
     var body: some View {
         NavigationView {
@@ -127,6 +119,23 @@ struct Diaries: View{
                                     .stroke(lineWidth: 1.0))
                     Text(main).opacity(0).padding(.all, 8)
                 }
+                .padding(.bottom, 20)
+                
+                HStack {
+                    Image(systemName: noChecked ? "square" : "checkmark.square.fill")
+                        .foregroundColor(noChecked ? Color.secondary : Color(UIColor.systemBlue))
+                        .onTapGesture {
+                            self.noChecked.toggle()
+                            
+                        }
+                        .padding(.trailing, 5)
+                    
+                    Text("Make the diary private")
+                        .font(.title2)
+                        .foregroundColor(.gray)
+                }
+                .padding(.bottom, 20)
+                
                 Spacer()
                 
                 Button(action: {
@@ -138,6 +147,7 @@ struct Diaries: View{
                     diary.title = title
                     diary.date = Date().localizedDescription
                     diary.mood = mood
+                    diary.isPublic = String(noChecked)
                     diary.value = main
                     diary.name = username[0].name!
                     
