@@ -6,11 +6,19 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct GlobalUsersView: View {
+    @State private var data = try! Realm().objects(Diary.self)
+    @State private var userData = try! Realm().objects(UserData.self)
+    
     var body: some View {
-        VStack{
-            Text("Yeet")
+        ScrollView {
+            ForEach(data) { item in
+                GlobalView(name: item.name, date: item.date, title: item.title, mood: item.mood, value: item.value)
+            }
+            .navigationTitle("People Around You")
+            .padding(.horizontal)
         }
     }
 }

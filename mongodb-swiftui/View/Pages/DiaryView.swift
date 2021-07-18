@@ -130,6 +130,7 @@ struct Diaries: View{
                 Spacer()
                 
                 Button(action: {
+                    let username = try! Realm().objects(UserData.self).filter("userID= '\(uid!)'")
                     print(Date().localizedDescription)
                     let diary = Diary()
                     
@@ -138,6 +139,7 @@ struct Diaries: View{
                     diary.date = Date().localizedDescription
                     diary.mood = mood
                     diary.value = main
+                    diary.name = username[0].name!
                     
                     try! realm.write{
                         realm.add(diary)
