@@ -12,27 +12,58 @@ struct DiaryView: View {
     
     @State var presented: Bool = false
     @State private var data: Results<Diary> = try! Realm().objects(Diary.self).filter("userID = '\(uid!)'")
-    
+    @State var globalData: Bool = false
     
     var body: some View {
         NavigationView {
-            List{
-                ForEach(data) { item in
-                    ListView(date: item.date, title: item.title, mood: item.mood, value: item.value)
+            VStack {
+                List{
+                    ForEach(data) { item in
+                        ListView(date: item.date, title: item.title, mood: item.mood, value: item.value)
+                    }
                 }
-            }
-            .listStyle(PlainListStyle())
+                .listStyle(PlainListStyle())
 
-            .navigationTitle("My Diary")
-            .toolbar{
-                Button(action: {
-                    self.presented.toggle()
-                }) {
-                    Image(systemName: "plus")
+                .navigationTitle("My Diary")
+                .toolbar{
+                    Button(action: {
+                        self.presented.toggle()
+                    }) {
+                        Image(systemName: "plus")
+                    }
                 }
+                .sheet(isPresented: $presented){
+                    Diaries(isPresented: $presented)
+                    
             }
-            .sheet(isPresented: $presented){
-                Diaries(isPresented: $presented)
+                HStack {
+                    NavigationLink(destination: GlobalUsersView(), isActive: $globalData) {
+                        Button(action: {
+                            self.globalData.toggle()
+                        }) {
+                            Text("Global Diaries")
+                                .padding(8)
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(.white)
+                                .padding(10)
+                                .overlay(RoundedRectangle(cornerRadius: 10)
+                                            .stroke(lineWidth: 2.0)
+                                            .shadow(color: .blue, radius: 10.0))
+                                .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
+                        }
+                    }
+                    Button(action: {}) {
+                        Text("Your public diaries")
+                            .padding(8)
+                            .frame(maxWidth: .infinity)
+                            .foregroundColor(.white)
+                            .padding(10)
+                            .overlay(RoundedRectangle(cornerRadius: 10)
+                                        .stroke(lineWidth: 2.0)
+                                        .shadow(color: .blue, radius: 10.0))
+                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
+                    }
+                }
                 
             }
         }
