@@ -17,7 +17,7 @@ struct DiaryView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List{
+               ScrollView {
                     ForEach(data) { item in
                         ListView(date: item.date, title: item.title, mood: item.mood, value: item.value)
                     }
