@@ -18,7 +18,7 @@ struct DiaryView: View {
         NavigationView {
             List{
                 ForEach(data) { item in
-                    ListView(date: item.date, title: item.title, mood: item.mood)
+                    ListView(date: item.date, title: item.title, mood: item.mood, value: item.value)
                 }
             }
             .listStyle(PlainListStyle())

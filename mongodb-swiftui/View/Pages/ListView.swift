@@ -12,6 +12,8 @@ struct ListView: View {
     @State var date:String?
     @State var title:String?
     @State var mood:String?
+    @State var value:String?
+    @State var isOpen: Bool = false
     
     var body: some View {
         ZStack {
@@ -29,12 +31,29 @@ struct ListView: View {
                         .font(.title2)
                         .foregroundColor(.white)
                     Spacer()
+                    HStack {
+                        Spacer()
+                        Image(systemName: buttonValue)
+                            .foregroundColor(.white)
+                            .onTapGesture {
+                                isOpen.toggle()
+                        }
+                    }
+                    
+                    if(isOpen == true){
+                        Text(value!)
+                            .foregroundColor(.black)
+                    }
                 }
                 .padding()
                 Spacer()
                 
             }
         }
+    }
+    
+    var buttonValue: String {
+        return isOpen ? "chevron.up.circle.fill" : "chevron.down.circle.fill"
     }
 }
 
