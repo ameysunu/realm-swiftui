@@ -9,7 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct GlobalUsersView: View {
-    @State private var data = try! Realm().objects(Diary.self)
+    @State private var data = try! Realm().objects(Diary.self).filter("isPublic = 'true'")
     @State private var userData = try! Realm().objects(UserData.self)
     
     var body: some View {
