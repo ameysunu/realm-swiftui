@@ -19,7 +19,7 @@ struct DiaryView: View {
             VStack {
                 ScrollView {
                     ForEach(data) { item in
-                        ListView(date: item.date, title: item.title, mood: item.mood, value: item.value)
+                        ListView(date: item.date, title: item.title, mood: item.mood, value: item.value, isPublic: item.isPublic)
                     }
                 }
                 .listStyle(PlainListStyle())
@@ -47,12 +47,13 @@ struct DiaryView: View {
 
 struct Diaries: View{
     
-    @State private var title: String = ""
-    @State private var mood: String = ""
-    @State private var main: String = ""
+    @State var title: String = ""
+    @State var mood: String = ""
+    @State var main: String = ""
     let realm = try! Realm()
     @Binding var isPresented: Bool
     @State var noChecked: Bool = true
+    @State var updateTriggered: Bool = false
     
     var body: some View {
         NavigationView {
@@ -109,39 +110,64 @@ struct Diaries: View{
                 
                 Spacer()
                 
-                Button(action: {
-                    let username = try! Realm().objects(UserData.self).filter("userID= '\(uid!)'")
-                    print(Date().localizedDescription)
-                    let diary = Diary()
-                    
-                    diary.userID = uid
-                    diary.title = title
-                    diary.date = Date().localizedDescription
-                    diary.mood = mood
-                    diary.isPublic = String(noChecked)
-                    diary.value = main
-                    diary.name = username[0].name!
-                    
-                    try! realm.write{
-                        realm.add(diary)
-                        isPresented.toggle()
+                if(updateTriggered == true){
+                    Button(action: {
+                        let realm = try! Realm()
+                        let diaryValue = realm.objects(Diary.self).filter("title = '\(title)'")[0]
+                        try! realm.write {
+                            diaryValue.date = Date().localizedDescription
+                            diaryValue.title = title
+                            diaryValue.mood = mood
+                            diaryValue.isPublic = String(noChecked)
+                            diaryValue.value = main
+                        }
+                        
+                    }){
+                        Text("Update")
+                            .padding(8)
+                            .frame(maxWidth: .infinity)
+                            .foregroundColor(.white)
+                            .padding(10)
+                            .overlay(RoundedRectangle(cornerRadius: 10)
+                                        .stroke(lineWidth: 2.0)
+                                        .shadow(color: .blue, radius: 10.0))
+                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
                     }
+                } else {
+                    Button(action: {
+                        let username = try! Realm().objects(UserData.self).filter("userID= '\(uid!)'")
+                        print(Date().localizedDescription)
+                        let diary = Diary()
+                        
+                        diary.userID = uid
+                        diary.title = title
+                        diary.date = Date().localizedDescription
+                        diary.mood = mood
+                        diary.isPublic = String(noChecked)
+                        diary.value = main
+                        diary.name = username[0].name!
+                        
+                        try! realm.write{
+                            realm.add(diary)
+                            isPresented.toggle()
+                        }
+                        
+                    }){
+                        Text("Save")
+                            .padding(8)
+                            .frame(maxWidth: .infinity)
+                            .foregroundColor(.white)
+                            .padding(10)
+                            .overlay(RoundedRectangle(cornerRadius: 10)
+                                        .stroke(lineWidth: 2.0)
+                                        .shadow(color: .blue, radius: 10.0))
+                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
+                    }
+                    .padding(.top, 20)
                     
-                }){
-                    Text("Save")
-                        .padding(8)
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(.white)
-                        .padding(10)
-                        .overlay(RoundedRectangle(cornerRadius: 10)
-                                    .stroke(lineWidth: 2.0)
-                                    .shadow(color: .blue, radius: 10.0))
-                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
+                    .navigationTitle("Create a page")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
-                .padding(.top, 20)
-                
-                .navigationTitle("Create a page")
-                .navigationBarTitleDisplayMode(.inline)
             }
             .padding()
         }
