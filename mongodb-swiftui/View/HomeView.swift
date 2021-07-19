@@ -15,6 +15,11 @@ struct HomeView: View {
                     Image(systemName: "books.vertical.fill")
                     Text("My Diary")
                 }
+            GlobalUsersView()
+                .tabItem {
+                    Image(systemName: "globe")
+                    Text("Global")
+                }
             
             Button(action: {
                 app.currentUser?.logOut { (error) in

@@ -31,6 +31,10 @@ struct ListView: View {
                         .font(.title2)
                         .foregroundColor(.white)
                     Spacer()
+                    if(isOpen == true){
+                        Text(value!)
+                            .foregroundColor(.black)
+                    }
                     HStack {
                         Spacer()
                         Image(systemName: buttonValue)
@@ -40,10 +44,6 @@ struct ListView: View {
                         }
                     }
                     
-                    if(isOpen == true){
-                        Text(value!)
-                            .foregroundColor(.black)
-                    }
                 }
                 .padding()
                 Spacer()
