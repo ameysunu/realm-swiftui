@@ -1,0 +1,9 @@
+spec:
+  name: realm-swiftui
+  services:
+  - dockerfile_path: Dockerfile
+    git:
+      branch: dev
+      repo_clone_url: https://github.com/ameysunu/realm-swiftui
+    name: realm-dockerfile
+    http_port: 80
