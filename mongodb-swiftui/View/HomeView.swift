@@ -21,22 +21,11 @@ struct HomeView: View {
                     Text("Global")
                 }
             
-            Button(action: {
-                app.currentUser?.logOut { (error) in
-                    if let e = error {
-                        print(e.localizedDescription)
-                    } else {
-                        print("logged out")
-                    }
+            UserPage()
+                .tabItem {
+                    Image(systemName: "person.fill")
+                    Text("User Details")
                 }
-                
-            }) {
-                Text("User Details")
-            }
-            .tabItem {
-                Image(systemName: "person.fill")
-                Text("User Details")
-            }
         }
     }
 }

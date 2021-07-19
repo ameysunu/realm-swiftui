@@ -13,7 +13,10 @@ struct ListView: View {
     @State var title:String?
     @State var mood:String?
     @State var value:String?
+    @State var isPublic: String?
     @State var isOpen: Bool = false
+    @State var isToggled: Bool = false
+    @State var functionEnabled: Bool = true
     
     var body: some View {
         ZStack {
@@ -35,12 +38,21 @@ struct ListView: View {
                         Text(value!)
                             .foregroundColor(.black)
                     }
-                    HStack {
-                        Spacer()
-                        Image(systemName: buttonValue)
-                            .foregroundColor(.white)
-                            .onTapGesture {
-                                isOpen.toggle()
+                    if(functionEnabled == true) {
+                        HStack {
+                            Spacer()
+                            Button(action:{
+                                self.isToggled.toggle()
+                            }) {
+                                Text("Edit")
+                                    .foregroundColor(Color("#914275"))
+                                    .padding(.trailing, 5)
+                            }
+                            Image(systemName: buttonValue)
+                                .foregroundColor(.white)
+                                .onTapGesture {
+                                    isOpen.toggle()
+                                }
                         }
                     }
                     
@@ -48,6 +60,9 @@ struct ListView: View {
                 .padding()
                 Spacer()
                 
+            }
+            .sheet(isPresented: $isToggled){
+                Diaries(title: title!, mood: mood!, main: value! ,isPresented: $isToggled, noChecked: Bool(isPublic!)!, updateTriggered: true )
             }
         }
     }
