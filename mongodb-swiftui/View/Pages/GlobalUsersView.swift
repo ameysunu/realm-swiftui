@@ -32,6 +32,8 @@ struct GlobalUsersView: View {
         .sheet(item: self.$selectedItem){ item in
             GlobalValueView(name: item.name, date: item.date, title: item.title, mood: item.mood, value: item.value)
         }
+        .navigationBarHidden(true)
+        .navigationTitle("")
     }
 }
 

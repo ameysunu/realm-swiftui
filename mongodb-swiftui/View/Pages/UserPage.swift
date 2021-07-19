@@ -16,6 +16,7 @@ struct UserPage: View {
     let userValues: Results<UserData>
     @State var isOpen: Bool = false
     @State private var publicData = try! Realm().objects(Diary.self).filter("userID = '\(uid!)'").filter("isPublic = 'true'")
+    @State var isToggled: Bool = false
     
     init(){
     let realm = try! Realm()
@@ -70,29 +71,33 @@ struct UserPage: View {
                     }
                 }
                 Spacer()
-                Button(action: {
-                    app.currentUser?.logOut { (error) in
-                        if let e = error {
-                            print(e.localizedDescription)
-                        } else {
-                            print("logged out")
+                NavigationLink(destination: LoginView(), isActive: $isToggled) {
+                    Button(action: {
+                        app.currentUser?.logOut { (error) in
+                            if let e = error {
+                                print(e.localizedDescription)
+                            } else {
+                                print("logged out")
+                            }
                         }
+                    }) {
+                        Text("Logout")
+                            .padding(8)
+                            .frame(maxWidth: .infinity)
+                            .foregroundColor(.white)
+                            .padding(10)
+                            .overlay(RoundedRectangle(cornerRadius: 10)
+                                        .stroke(lineWidth: 2.0)
+                                        .shadow(color: .blue, radius: 10.0))
+                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
                     }
-                }) {
-                    Text("Logout")
-                        .padding(8)
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(.white)
-                        .padding(10)
-                        .overlay(RoundedRectangle(cornerRadius: 10)
-                                    .stroke(lineWidth: 2.0)
-                                    .shadow(color: .blue, radius: 10.0))
-                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
                 }
             }
             .padding()
             .navigationTitle("Hello \(userValues[0].name!)")
         }
+        .navigationBarHidden(true)
+        .navigationTitle("")
     }
 }
 
