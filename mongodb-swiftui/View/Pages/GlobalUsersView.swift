@@ -13,12 +13,14 @@ struct GlobalUsersView: View {
     @State private var userData = try! Realm().objects(UserData.self)
     
     var body: some View {
-        ScrollView {
-            ForEach(data) { item in
-                GlobalView(name: item.name, date: item.date, title: item.title, mood: item.mood, value: item.value)
+        NavigationView {
+            ScrollView {
+                ForEach(data) { item in
+                    GlobalView(name: item.name, date: item.date, title: item.title, mood: item.mood, value: item.value)
+                }
+                .navigationTitle("People Around You")
+                .padding(.horizontal)
             }
-            .navigationTitle("People Around You")
-            .padding(.horizontal)
         }
     }
 }

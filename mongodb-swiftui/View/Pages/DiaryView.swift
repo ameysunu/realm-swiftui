@@ -36,35 +36,6 @@ struct DiaryView: View {
                     Diaries(isPresented: $presented)
                     
                 }
-                HStack {
-                    NavigationLink(destination: GlobalUsersView(), isActive: $globalData) {
-                        Button(action: {
-                            self.globalData.toggle()
-                        }) {
-                            Text("Global Diaries")
-                                .padding(8)
-                                .frame(maxWidth: .infinity)
-                                .foregroundColor(.white)
-                                .padding(10)
-                                .overlay(RoundedRectangle(cornerRadius: 10)
-                                            .stroke(lineWidth: 2.0)
-                                            .shadow(color: .blue, radius: 10.0))
-                                .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
-                        }
-                    }
-                    Button(action: {}) {
-                        Text("Your public diaries")
-                            .padding(8)
-                            .frame(maxWidth: .infinity)
-                            .foregroundColor(.white)
-                            .padding(10)
-                            .overlay(RoundedRectangle(cornerRadius: 10)
-                                        .stroke(lineWidth: 2.0)
-                                        .shadow(color: .blue, radius: 10.0))
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
-                    }
-                }
-                
             }
         }
         .navigationBarHidden(true)
