@@ -58,7 +58,7 @@ struct UserPage: View {
                     Button(action: {
                         self.isOpen.toggle()
                     }) {
-                        Image(systemName: "chevron.down.circle.fill")
+                        Image(systemName: buttonValue)
                             .foregroundColor(.gray)
                     }
                 }
@@ -98,6 +98,9 @@ struct UserPage: View {
         }
         .navigationBarHidden(true)
         .navigationTitle("")
+    }
+    var buttonValue: String {
+        return isOpen ? "chevron.up.circle.fill" : "chevron.down.circle.fill"
     }
 }
 
