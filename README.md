@@ -7,3 +7,9 @@ The app allows users to write a diary, and share with everyone else.
 
 * Authentication using Realm Auth
 * CRUD operations on Realm, deployed to MongoDB Compass and DigitalOcean.
+
+### Screenshots
+
+<img src= "images/1.png" width="360" height="720" > <img src= "images/2.png" width="360" height="720" > 
+<img src= "images/3.png" width="360" height="720" > <img src= "images/4.png" width="360" height="720" > 
+<img src= "images/5.png" width="360" height="720" > <img src= "images/6.png" width="360" height="720" > 
