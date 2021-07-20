@@ -78,6 +78,7 @@ struct UserPage: View {
                                 print(e.localizedDescription)
                             } else {
                                 print("logged out")
+                                self.isToggled.toggle()
                             }
                         }
                     }) {
