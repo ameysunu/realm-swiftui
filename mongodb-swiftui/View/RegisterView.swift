@@ -17,6 +17,8 @@ struct RegisterView: View {
     
     @State var alertItem: AlertItem?
     
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         VStack(alignment: .leading){
             
@@ -46,8 +48,9 @@ struct RegisterView: View {
                         if success {
                             self.load.toggle()
                             
-                            self.alertItem = AlertItem(title: Text("Success"), message: Text("Created an account successfully! Kindly go back to Login page to login with your credentials."), dismissButton: .default(Text("Done")))
-                            
+                            self.alertItem = AlertItem(title: Text("Success"), message: Text("Created an account successfully! Kindly login with your credentials."), dismissButton: .default(Text("Done"), action: {
+                                self.presentationMode.wrappedValue.dismiss()
+                            }))
                         } else {
                             self.load.toggle()
                             self.alertItem = AlertItem(title: Text("Error"), message: Text(e!), dismissButton: .default(Text("Done")))
