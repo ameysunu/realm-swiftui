@@ -13,3 +13,6 @@ The app allows users to write a diary, and share with everyone else.
 <img src= "images/1.png" width="360" height="720" > <img src= "images/2.png" width="360" height="720" > 
 <img src= "images/3.png" width="360" height="720" > <img src= "images/4.png" width="360" height="720" > 
 <img src= "images/5.png" width="360" height="720" > <img src= "images/6.png" width="360" height="720" > 
+
+## Contributing
+To start contributing, review CONTRIBUTING.md. New contributors are always welcome to support this project. Issues labeled `good-first-issue` are great for beginners. 
