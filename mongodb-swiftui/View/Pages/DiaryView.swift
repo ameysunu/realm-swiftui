@@ -18,9 +18,27 @@ struct DiaryView: View {
         NavigationView {
             VStack {
                 ScrollView {
-                    ForEach(data) { item in
-                        ListView(date: item.date, title: item.title, mood: item.mood, value: item.value, isPublic: item.isPublic)
+                    if data.count == 0{
+                        Label {
+                            Text("No Data Found")
+                                .foregroundColor(.primary)
+                                .font(.system(size: 30))
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .clipShape(Capsule())
+                        }
+                        icon: {
+//                            RoundedRectangle(cornerRadius: 10)
+//                                .fill(Color.blue)
+//                                .frame(width: 64, height: 64)
+                        }
                     }
+                    else{
+                        ForEach(data) { item in
+                            ListView(date: item.date, title: item.title, mood: item.mood, value: item.value, isPublic: item.isPublic)
+                        }
+                    }
+                    
                 }
                 .listStyle(PlainListStyle())
                 
