@@ -50,6 +50,8 @@ struct LoginView: View {
                                         self.isSignedBefore = true
                                         print(userCheck)
                                     }
+                                    self.email = ""
+                                    self.password = ""
                                 }else {
                                     self.load.toggle()
                                     self.alertItem = AlertItem(title: Text("Error"), message: Text(e!), dismissButton: .default(Text("Done")))
