@@ -9,7 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct UserPage: View {
-    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var name: String?
     @State var age: String?
     @State var country: String?
@@ -71,12 +71,15 @@ struct UserPage: View {
                     }
                 }
                 Spacer()
-                NavigationLink(destination: LoginView(), isActive: $isToggled) {
+                NavigationLink(destination: LoginView().navigationBarBackButtonHidden(true), isActive: $isToggled) {
                     Button(action: {
                         app.currentUser?.logOut { (error) in
                             if let e = error {
                                 print(e.localizedDescription)
                             } else {
+                                DispatchQueue.main.async {
+                                    self.presentationMode.wrappedValue.dismiss()
+                                }
                                 print("logged out")
                                 self.isToggled.toggle()
                             }
