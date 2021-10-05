@@ -22,7 +22,9 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                Spacer()
+                Spacer(minLength: 15)
+                LottieView(name: "noteTaking", loopMode: .loop)
+                    .frame(width: 250, height: 250)
                 TextField("Email ID",text: $email)
                     .padding()
                     .overlay(RoundedRectangle(cornerRadius: 5.0)
@@ -90,7 +92,7 @@ struct LoginView: View {
                 HStack {
                     Spacer()
                     NavigationLink(destination: RegisterView()) {
-                        Text("I'm new here. Create a new account?")
+                        Text("Don't have an account ? Signup.")
                             .foregroundColor(.blue)
                     }
                     Spacer()

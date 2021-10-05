@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import SPConfetti
 var e: String?
 struct RegisterView: View {
     
@@ -21,7 +21,8 @@ struct RegisterView: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            
+            LottieView(name: "signup", loopMode: .loop)
+                .frame(width: 250, height: 250)
             TextField("Email ID",text: $email)
                 .padding()
                 .overlay(RoundedRectangle(cornerRadius: 5.0)
@@ -47,7 +48,10 @@ struct RegisterView: View {
                         (success) -> Void in
                         if success {
                             self.load.toggle()
-                            
+                            DispatchQueue.main.async {
+                                SPConfetti.startAnimating(.centerWidthToDown, particles: [.triangle, .arc], duration: 3)
+
+                            }
                             self.alertItem = AlertItem(title: Text("Success"), message: Text("Created an account successfully! Kindly login with your credentials."), dismissButton: .default(Text("Done"), action: {
                                 self.presentationMode.wrappedValue.dismiss()
                             }))

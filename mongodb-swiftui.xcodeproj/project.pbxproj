@@ -24,6 +24,11 @@
 		9D817614269F4C000052FBF6 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D817613269F4C000052FBF6 /* RegisterView.swift */; };
 		9DA463CB26A008C200FD7A46 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA463CA26A008C200FD7A46 /* HomeView.swift */; };
 		9DF34CF526A1651E00039F6C /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF34CF426A1651E00039F6C /* WelcomeView.swift */; };
+		D5631409270CE636005E6CDF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = D5631408270CE636005E6CDF /* Lottie */; };
+		D563140B270CE64A005E6CDF /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D563140A270CE64A005E6CDF /* LottieView.swift */; };
+		D563140E270CE6C7005E6CDF /* noteTaking.json in Resources */ = {isa = PBXBuildFile; fileRef = D563140D270CE6C7005E6CDF /* noteTaking.json */; };
+		D5631411270CE9D2005E6CDF /* SPConfetti in Frameworks */ = {isa = PBXBuildFile; productRef = D5631410270CE9D2005E6CDF /* SPConfetti */; };
+		D5631413270CED21005E6CDF /* signup.json in Resources */ = {isa = PBXBuildFile; fileRef = D5631412270CED20005E6CDF /* signup.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +49,9 @@
 		9D817613269F4C000052FBF6 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		9DA463CA26A008C200FD7A46 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9DF34CF426A1651E00039F6C /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		D563140A270CE64A005E6CDF /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		D563140D270CE6C7005E6CDF /* noteTaking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noteTaking.json; sourceTree = "<group>"; };
+		D5631412270CED20005E6CDF /* signup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = signup.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +60,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D81760A269EAFAE0052FBF6 /* RealmSwift in Frameworks */,
+				D5631411270CE9D2005E6CDF /* SPConfetti in Frameworks */,
 				9D817608269EAFAE0052FBF6 /* Realm in Frameworks */,
+				D5631409270CE636005E6CDF /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +97,7 @@
 		9D8175F6269EAEB10052FBF6 /* mongodb-swiftui */ = {
 			isa = PBXGroup;
 			children = (
+				D563140C270CE698005E6CDF /* Lottie */,
 				9D8175F7269EAEB10052FBF6 /* mongodb_swiftuiApp.swift */,
 				9D8175F9269EAEB10052FBF6 /* ContentView.swift */,
 				9D231B9326A420DE009E482B /* Designs */,
@@ -114,6 +125,7 @@
 				9D817613269F4C000052FBF6 /* RegisterView.swift */,
 				9DA463CA26A008C200FD7A46 /* HomeView.swift */,
 				9DF34CF626A1652200039F6C /* Pages */,
+				D563140A270CE64A005E6CDF /* LottieView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -138,6 +150,15 @@
 			path = Pages;
 			sourceTree = "<group>";
 		};
+		D563140C270CE698005E6CDF /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				D5631412270CED20005E6CDF /* signup.json */,
+				D563140D270CE6C7005E6CDF /* noteTaking.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -157,6 +178,8 @@
 			packageProductDependencies = (
 				9D817607269EAFAE0052FBF6 /* Realm */,
 				9D817609269EAFAE0052FBF6 /* RealmSwift */,
+				D5631408270CE636005E6CDF /* Lottie */,
+				D5631410270CE9D2005E6CDF /* SPConfetti */,
 			);
 			productName = "mongodb-swiftui";
 			productReference = 9D8175F4269EAEB10052FBF6 /* mongodb-swiftui.app */;
@@ -187,6 +210,8 @@
 			mainGroup = 9D8175EB269EAEB10052FBF6;
 			packageReferences = (
 				9D817606269EAFAE0052FBF6 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				D5631407270CE636005E6CDF /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				D563140F270CE9D1005E6CDF /* XCRemoteSwiftPackageReference "SPConfetti" */,
 			);
 			productRefGroup = 9D8175F5269EAEB10052FBF6 /* Products */;
 			projectDirPath = "";
@@ -203,6 +228,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D8175FF269EAEB10052FBF6 /* Preview Assets.xcassets in Resources */,
+				D5631413270CED21005E6CDF /* signup.json in Resources */,
+				D563140E270CE6C7005E6CDF /* noteTaking.json in Resources */,
 				9D8175FC269EAEB10052FBF6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +252,7 @@
 				9D231B9226A41843009E482B /* GlobalUsersView.swift in Sources */,
 				9D79D12726A29D4100B191ED /* DiaryView.swift in Sources */,
 				9D817614269F4C000052FBF6 /* RegisterView.swift in Sources */,
+				D563140B270CE64A005E6CDF /* LottieView.swift in Sources */,
 				9D81760E269ECA650052FBF6 /* LoginView.swift in Sources */,
 				9D8175F8269EAEB10052FBF6 /* mongodb_swiftuiApp.swift in Sources */,
 			);
@@ -423,6 +451,22 @@
 				minimumVersion = 10.10.0;
 			};
 		};
+		D5631407270CE636005E6CDF /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		D563140F270CE9D1005E6CDF /* XCRemoteSwiftPackageReference "SPConfetti" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivanvorobei/SPConfetti";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -435,6 +479,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9D817606269EAFAE0052FBF6 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
+		};
+		D5631408270CE636005E6CDF /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5631407270CE636005E6CDF /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		D5631410270CE9D2005E6CDF /* SPConfetti */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D563140F270CE9D1005E6CDF /* XCRemoteSwiftPackageReference "SPConfetti" */;
+			productName = SPConfetti;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
