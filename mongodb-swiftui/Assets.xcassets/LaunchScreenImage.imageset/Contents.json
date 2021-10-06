@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "appicon.png",
+      "filename" : "imageonline-co-roundcorner.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "appicon-1.png",
+      "filename" : "imageonline-co-roundcorner-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "appicon-2.png",
+      "filename" : "imageonline-co-roundcorner-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
