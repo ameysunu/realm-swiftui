@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18F9E9C0270DA29500C32202 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F9E9BF270DA29500C32202 /* LaunchScreen.storyboard */; };
 		88AA2D2B270DEDA7001647FA /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA2D2A270DEDA7001647FA /* DataStore.swift */; };
 		9D231B9026A3F6ED009E482B /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D231B8F26A3F6ED009E482B /* ListView.swift */; };
 		9D231B9226A41843009E482B /* GlobalUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D231B9126A41843009E482B /* GlobalUsersView.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18F9E9BF270DA29500C32202 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88AA2D2A270DEDA7001647FA /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		9D231B8F26A3F6ED009E482B /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		9D231B9126A41843009E482B /* GlobalUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalUsersView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				88AA2D29270DED94001647FA /* DataStore */,
 				9D231B9326A420DE009E482B /* Designs */,
 				9D817610269F47D60052FBF6 /* Models */,
+				18F9E9BF270DA29500C32202 /* LaunchScreen.storyboard */,
 				9D81760F269ECA6E0052FBF6 /* View */,
 				9D8175FD269EAEB10052FBF6 /* Preview Content */,
 			);
@@ -213,6 +216,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F9E9C0270DA29500C32202 /* LaunchScreen.storyboard in Resources */,
 				9D8175FF269EAEB10052FBF6 /* Preview Assets.xcassets in Resources */,
 				9D8175FC269EAEB10052FBF6 /* Assets.xcassets in Resources */,
 			);
