@@ -9,44 +9,47 @@ import SwiftUI
 import RealmSwift
 
 struct UserPage: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var name: String?
-    @State var age: String?
-    @State var country: String?
-    let userValues: Results<UserData>
-    @State var isOpen: Bool = false
-    @State private var publicData = try! Realm().objects(Diary.self).filter("userID = '\(uid!)'").filter("isPublic = 'true'")
-    @State var isToggled: Bool = false
+    @Environment(\.presentationMode)
+    var presentationMode: Binding<PresentationMode>
     
-    init(){
-    let realm = try! Realm()
-    let results = realm.objects(UserData.self).filter("userID = '\(uid!)'")
-        print(results)
-        userValues = results
+    @ObservedObject
+    private var dataStore = DataStore.shared
+    
+    private var user: UserData? {
+        dataStore.user
     }
     
-    let pageCount = try! Realm().objects(Diary.self).filter("userID = '\(uid!)'").count
+    @State
+    private var isOpen: Bool = false
+    
+    @State
+    private var isToggled: Bool = false
+    
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading){
+            VStack(alignment: .leading) {
                 HStack {
-                    Text("\(userValues[0].name!),")
-                        .font(.title)
-                    Text(userValues[0].age!)
-                        .font(.title)
-                        .foregroundColor(.gray)
+                    if let name = user?.name {
+                        Text(name)
+                            .font(.title)
+                    }
+                    if let age = user?.age {
+                        Text(age)
+                            .font(.title)
+                            .foregroundColor(.gray)
+                    }
                     Spacer()
                     Button(action: {
-                        
                     }) {
                         Image(systemName: "pencil.circle.fill")
                     }
                 }
-                Text(userValues[0].country!)
-                    .font(.title2)
-                    .foregroundColor(.gray)
-                
-                Text("Total Pages written: \(pageCount)")
+                if let country = user?.country {
+                    Text(country)
+                        .font(.title2)
+                        .foregroundColor(.gray)
+                }
+                Text("Total Pages written: \(dataStore.diaries?.count ?? 0)")
                     .font(.title3)
                     .padding(.top, 10)
                 
@@ -63,10 +66,18 @@ struct UserPage: View {
                     }
                 }
                 .padding(.top, 20)
-                if(isOpen == true){
-                    ScrollView{
-                        ForEach(publicData){ data in
-                            ListView(date: data.date, title: data.title, mood: data.mood, value: data.value, functionEnabled: false)
+                if(isOpen == true) {
+                    if let publicDiaries = dataStore.publicDiaries {
+                        ScrollView{
+                            ForEach(publicDiaries){ data in
+                                ListView(
+                                    date: data.date,
+                                    title: data.title,
+                                    mood: data.mood,
+                                    value: data.value,
+                                    functionEnabled: false
+                                )
+                            }
                         }
                     }
                 }
@@ -98,7 +109,7 @@ struct UserPage: View {
                 }
             }
             .padding()
-            .navigationTitle("Hello \(userValues[0].name!)")
+            .navigationTitle("Hello \(dataStore.user?.name ?? "")")
         }
         .navigationBarHidden(true)
         .navigationTitle("")

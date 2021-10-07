@@ -97,15 +97,15 @@
 		9D8175F6269EAEB10052FBF6 /* mongodb-swiftui */ = {
 			isa = PBXGroup;
 			children = (
-				88AA2D29270DED94001647FA /* DataStore */,
 				9D8175F7269EAEB10052FBF6 /* mongodb_swiftuiApp.swift */,
 				9D8175F9269EAEB10052FBF6 /* ContentView.swift */,
-				9D231B9326A420DE009E482B /* Designs */,
-				9D81760F269ECA6E0052FBF6 /* View */,
 				9D8175FB269EAEB10052FBF6 /* Assets.xcassets */,
 				9D817600269EAEB10052FBF6 /* Info.plist */,
-				9D8175FD269EAEB10052FBF6 /* Preview Content */,
+				88AA2D29270DED94001647FA /* DataStore */,
+				9D231B9326A420DE009E482B /* Designs */,
 				9D817610269F47D60052FBF6 /* Models */,
+				9D81760F269ECA6E0052FBF6 /* View */,
+				9D8175FD269EAEB10052FBF6 /* Preview Content */,
 			);
 			path = "mongodb-swiftui";
 			sourceTree = "<group>";

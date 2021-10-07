@@ -13,7 +13,13 @@ class DataStore: NSObject, ObservableObject {
     static let shared = DataStore()
     
     @Published
+    var user: UserData?
+    
+    @Published
     var diaries: Results<Diary>?
+    
+    @Published
+    var publicDiaries: Results<Diary>?
     
     private var token: NotificationToken? = nil
     private var realm = try! Realm()
@@ -21,7 +27,7 @@ class DataStore: NSObject, ObservableObject {
     // MARK: - Object Lifecycle
     override private init() {
         super.init()
-        diaries = realm.objects(Diary.self).filter("userID = '\(uid!)'")
+        fetchData()
         addObserver()
     }
     
@@ -29,9 +35,15 @@ class DataStore: NSObject, ObservableObject {
         token?.invalidate()
     }
     
+    private func fetchData() {
+        user = realm.objects(UserData.self).filter("userID = '\(uid!)'").first
+        diaries = realm.objects(Diary.self).filter("userID = '\(uid!)'")
+        publicDiaries = diaries?.filter("isPublic = 'true'")
+    }
+    
     private func addObserver() {
         token = realm.observe { notification, realm in
-            self.diaries = realm.objects(Diary.self).filter("userID = '\(uid!)'")
+            self.fetchData()
         }
     }
 }

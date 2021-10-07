@@ -9,28 +9,47 @@ import SwiftUI
 import RealmSwift
 
 struct GlobalUsersView: View {
-    @State private var data = try! Realm().objects(Diary.self).filter("isPublic = 'true'")
-    @State private var userData = try! Realm().objects(UserData.self)
-    @State var isPresented: Bool = false
-    @State var selectedItem: Diary?
+    
+    @ObservedObject
+    private var dataStore = DataStore.shared
+    
+    @State
+    private var userData = try! Realm().objects(UserData.self)
+    @State
+    var isPresented: Bool = false
+    @State
+    var selectedItem: Diary?
     
     var body: some View {
         NavigationView {
             ScrollView {
-                ForEach(data) { item in
-                    GlobalView(name: item.name, date: item.date, title: item.title, mood: item.mood, value: item.value)
-                        .onTapGesture {
-                            self.isPresented.toggle()
-                            self.selectedItem = item
-                        }
+                if let publicDiaries = dataStore.publicDiaries {
+                    ForEach(publicDiaries) { item in
+                        GlobalView(name: item.name,
+                                   date: item.date,
+                                   title: item.title,
+                                   mood: item.mood,
+                                   value: item.value
+                        )
+                            .onTapGesture {
+                                self.isPresented.toggle()
+                                self.selectedItem = item
+                            }
+                    }
                 }
-                .navigationTitle("People Around You")
-                .padding(.horizontal)
             }
+            .navigationTitle("People Around You")
+            .padding(.horizontal)
             
         }
         .sheet(item: self.$selectedItem){ item in
-            GlobalValueView(name: item.name, date: item.date, title: item.title, mood: item.mood, value: item.value)
+            GlobalValueView(
+                name: item.name,
+                date: item.date,
+                title: item.title,
+                mood: item.mood,
+                value: item.value
+            )
         }
         .navigationBarHidden(true)
         .navigationTitle("")
