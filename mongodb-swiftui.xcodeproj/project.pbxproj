@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18F9E9C0270DA29500C32202 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F9E9BF270DA29500C32202 /* LaunchScreen.storyboard */; };
+		88AA2D2B270DEDA7001647FA /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA2D2A270DEDA7001647FA /* DataStore.swift */; };
 		9D231B9026A3F6ED009E482B /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D231B8F26A3F6ED009E482B /* ListView.swift */; };
 		9D231B9226A41843009E482B /* GlobalUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D231B9126A41843009E482B /* GlobalUsersView.swift */; };
 		9D231B9526A420EC009E482B /* GlobalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D231B9426A420EC009E482B /* GlobalView.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		18F9E9BF270DA29500C32202 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		88AA2D2A270DEDA7001647FA /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		9D231B8F26A3F6ED009E482B /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		9D231B9126A41843009E482B /* GlobalUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalUsersView.swift; sourceTree = "<group>"; };
 		9D231B9426A420EC009E482B /* GlobalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		88AA2D29270DED94001647FA /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				88AA2D2A270DEDA7001647FA /* DataStore.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
 		9D231B9326A420DE009E482B /* Designs */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,13 +101,14 @@
 			children = (
 				9D8175F7269EAEB10052FBF6 /* mongodb_swiftuiApp.swift */,
 				9D8175F9269EAEB10052FBF6 /* ContentView.swift */,
-				9D231B9326A420DE009E482B /* Designs */,
-				9D81760F269ECA6E0052FBF6 /* View */,
 				9D8175FB269EAEB10052FBF6 /* Assets.xcassets */,
 				9D817600269EAEB10052FBF6 /* Info.plist */,
-				9D8175FD269EAEB10052FBF6 /* Preview Content */,
+				88AA2D29270DED94001647FA /* DataStore */,
+				9D231B9326A420DE009E482B /* Designs */,
 				9D817610269F47D60052FBF6 /* Models */,
 				18F9E9BF270DA29500C32202 /* LaunchScreen.storyboard */,
+				9D81760F269ECA6E0052FBF6 /* View */,
+				9D8175FD269EAEB10052FBF6 /* Preview Content */,
 			);
 			path = "mongodb-swiftui";
 			sourceTree = "<group>";
@@ -225,6 +236,7 @@
 				9D231B9526A420EC009E482B /* GlobalView.swift in Sources */,
 				9D8175FA269EAEB10052FBF6 /* ContentView.swift in Sources */,
 				9DF34CF526A1651E00039F6C /* WelcomeView.swift in Sources */,
+				88AA2D2B270DEDA7001647FA /* DataStore.swift in Sources */,
 				9D817612269F47E10052FBF6 /* RealmAuth.swift in Sources */,
 				9D231B9226A41843009E482B /* GlobalUsersView.swift in Sources */,
 				9D79D12726A29D4100B191ED /* DiaryView.swift in Sources */,

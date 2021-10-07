@@ -10,15 +10,20 @@ import RealmSwift
 
 struct DiaryView: View {
     
-    @State var presented: Bool = false
-    @State private var data: Results<Diary> = try! Realm().objects(Diary.self).filter("userID = '\(uid!)'")
-    @State var globalData: Bool = false
+    @ObservedObject
+    var dataStore = DataStore.shared
+    
+    @State
+    var presented: Bool = false
+    
+    @State
+    var globalData: Bool = false
     
     var body: some View {
         NavigationView {
             VStack {
                 ScrollView {
-                    if data.count == 0{
+                    if dataStore.diaries?.count == 0{
                         Label {
                             Text("No Data Found")
                                 .foregroundColor(.primary)
@@ -28,14 +33,18 @@ struct DiaryView: View {
                                 .clipShape(Capsule())
                         }
                         icon: {
-//                            RoundedRectangle(cornerRadius: 10)
-//                                .fill(Color.blue)
-//                                .frame(width: 64, height: 64)
                         }
                     }
-                    else{
-                        ForEach(data) { item in
-                            ListView(date: item.date, title: item.title, mood: item.mood, value: item.value, isPublic: item.isPublic)
+                    else if let diaries = dataStore.diaries {
+                        ForEach(diaries) { item in
+                            ListView(
+                                date: item.date,
+                                title: item.title,
+                                mood: item.mood,
+                                value: item.value,
+                                isPublic: item.isPublic
+                            )
+                                .padding(.horizontal)
                         }
                     }
                     
