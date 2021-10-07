@@ -71,9 +71,9 @@ struct RegisterView: View {
                         .foregroundColor(.white)
                         .padding(10)
                         .overlay(RoundedRectangle(cornerRadius: 10)
-                                    .stroke(lineWidth: 2.0)
+                                    .stroke(lineWidth: 0)
                                     .shadow(color: .blue, radius: 10.0))
-                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
+                        .background(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(gradient: Gradient(colors: [.black, .purple]), startPoint: .top, endPoint: .bottom)))
                 } else {
                     HStack{
                         Spacer()
