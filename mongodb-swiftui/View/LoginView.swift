@@ -22,7 +22,9 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                Spacer()
+                Spacer(minLength: 15)
+                LottieView(name: "noteTaking", loopMode: .loop)
+                    .frame(width: 250, height: 250)
                 TextField("Email ID",text: $email)
                     .padding()
                     .overlay(RoundedRectangle(cornerRadius: 5.0)
@@ -80,9 +82,9 @@ struct LoginView: View {
                                     .foregroundColor(.white)
                                     .padding(10)
                                     .overlay(RoundedRectangle(cornerRadius: 10)
-                                                .stroke(lineWidth: 2.0)
-                                                .shadow(color: .blue, radius: 10.0))
-                                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.blue))
+                                                .stroke(lineWidth: 0)
+                                        )
+                                    .background(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(gradient: Gradient(colors: [.black, .purple]), startPoint: .top, endPoint: .bottom)))
                             }
                         }
                         .padding(.top, 10)
@@ -92,8 +94,8 @@ struct LoginView: View {
                 HStack {
                     Spacer()
                     NavigationLink(destination: RegisterView()) {
-                        Text("I'm new here. Create a new account?")
-                            .foregroundColor(.blue)
+                        Text("Don't have an account ? Signup.")
+                            .foregroundColor(.black)
                     }
                     Spacer()
                 }
@@ -104,7 +106,7 @@ struct LoginView: View {
             }
             .navigationTitle("Login")
             .padding()
-        }
+        }.accentColor(Color.black)
     }
 }
 
