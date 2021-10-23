@@ -85,7 +85,7 @@ struct Diaries: View{
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                Text("Enter a title for your page")
+                Text("Enter a title")
                     .font(.title2)
                     .foregroundColor(.gray)
                     .padding(.bottom, 10)
